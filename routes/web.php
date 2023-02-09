@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/sample/{id}', function ($id) {
+    return response('Post ' . $id);
+})->where('id', '[0-9]+');
+
+
+
+Route::get('/search', function (Request $request) {
+    return ($request->name . "" . $request->pet);
+});
+
+//view basics and passing of data
+Route::get('/products', function (Request $request) {
+    return response('Products Page');
 });
