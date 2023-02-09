@@ -26,10 +26,24 @@ Route::get('/sample/{id}', function ($id) {
 
 
 Route::get('/search', function (Request $request) {
+    ddd($request);
     return ($request->name . "" . $request->pet);
 });
 
 //view basics and passing of data
 Route::get('/products', function (Request $request) {
-    return response('Products Page');
+    return view('index' ,[
+        'title'=>'Products',
+    'heading' => 'Coffee',
+    'product' => [
+        [    
+            'flavor' => 'Hazelnut',
+            'desc' => 'This coffe is hazelnut flavor. This coffee is hazelnut flavor'
+        ],
+        [    
+            'flavor' => 'Ice Coffee',
+            'desc' => 'Just a random description'
+        ]
+    ]
+    ]);
 });
