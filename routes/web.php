@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,19 +32,6 @@ Route::get('/search', function (Request $request) {
 });
 
 //view basics and passing of data
-Route::get('/products', function (Request $request) {
-    return view('index' ,[
-        'title'=>'Products',
-    'heading' => 'Coffee',
-    'product' => [
-        [    
-            'flavor' => 'Hazelnut',
-            'desc' => 'This coffe is hazelnut flavor. This coffee is hazelnut flavor'
-        ],
-        [    
-            'flavor' => 'Ice Coffee',
-            'desc' => 'Just a random description'
-        ]
-    ]
-    ]);
-});
+Route::get('/products', [ProductController::class , 'index'] )->name('products.index');
+
+Route::get('/homepage', [ProductController::class , 'homepage'] )->name('products.index');
